@@ -13,7 +13,6 @@ router.get('/:productId', function(req, res, next) {
     .populate('category')
     .exec(function(err, product) {
       if (err) throw err;
-      console.log(product);
       res.render('product', { product: product[0] });
     });
 });

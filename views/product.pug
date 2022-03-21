@@ -9,3 +9,5 @@ block content
     li #{product.category[0].name}
     li 
       img(src=product.image style='width: 50%')
+    button 
+        a(href="/products/edit/" + product._id) Edit Product

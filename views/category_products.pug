@@ -1,0 +1,14 @@
+extends layout 
+
+block content
+  h2 #{products[0].category[0].name}s
+  each product in products
+    h3 #{product.name}
+      ul  
+      li #{product.description}
+      li #{product.price}
+      li #{product.number_in_stock}
+      li #{product.category[0].name}
+      li 
+        img(src=product.image style='width: 50%')
+      

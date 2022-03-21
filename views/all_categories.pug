@@ -4,4 +4,5 @@ block content
   h1 All Product Categories
   ul 
     each category in categories 
-      li= category.name
+      li
+        a(href=category.url) #{category.name}

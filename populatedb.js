@@ -251,7 +251,7 @@ async.series(
     if (err) {
       console.log('FINAL ERR: ' + err);
     } else {
-      console.log('BOOKInstances: ' + bookinstances);
+      console.log('BOOKInstances:');
     }
     // All done, disconnect from database
     mongoose.connection.close();

@@ -1,0 +1,8 @@
+extends layout 
+block content 
+
+  h1 All Products 
+  ul 
+    each product in products
+      li 
+        a(href=product.url) #{product.name}

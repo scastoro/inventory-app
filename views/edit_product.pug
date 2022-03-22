@@ -1,0 +1,21 @@
+extend layout 
+
+block content
+  h3 Edit Product
+  form(action='/products/edit/' + product._id method="post" class="edit-product-form")
+    label(for="name" class="name-label") Name: 
+    input(type="text" id="name" name="name" value=product.name class='name-input')
+    label(for="description" class="description-label") Description: 
+    textarea(class="description-input" name="description" id="description" rows=10 cols=30) #{product.description}
+    label(for="price" class="price-label") price: 
+    input(type="number" id="price" name="price" value=product.price class='price-input')
+    label(for="in-stock" class="in-stock-label") In Stock: 
+    input(type="number" id="in-stock" name="in-stock" value=product.number_in_stock class='in-stock-input')
+    label(for="category" class="category-input")
+    select(id="category" name="category")
+      each category in categories
+        if product.category[0].id === category.id
+          option(value=category._id selected) #{category.name}
+        else
+          option(value=category._id ) #{category.name}
+    button(type="submit") Update Product 

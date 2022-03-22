@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/product');
+const Category = require('../models/category');
 
 router.get('/', function(req, res, next) {
   Product.find({}, function(err, products) {
@@ -15,5 +16,31 @@ router.get('/:productId', function(req, res, next) {
       if (err) throw err;
       res.render('product', { product: product[0] });
     });
+});
+// Populate edit products page with info from database
+router.get('/edit/:productId', async function(req, res, next) {
+  const product = await Product.findById(req.params.productId).populate('category');
+  const categories = await Category.find({});
+
+  console.log(product.category[0].id);
+  res.render('edit_product', { product: product, categories: categories });
+});
+// Send form data to database
+router.post('/edit/:productId', async function(req, res, next) {
+  Product.findByIdAndUpdate(
+    req.params.productId,
+    {
+      name: req.body.name,
+      description: req.body.description,
+      number_in_stock: req.body['in-stock'],
+      price: req.body.price,
+      category: [req.body.category],
+    },
+    function(err, docs) {
+      if (err) throw err;
+      console.log(docs);
+    }
+  );
+  res.redirect('/products/' + req.params.productId);
 });
 module.exports = router;

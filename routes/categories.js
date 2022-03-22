@@ -11,6 +11,24 @@ router.get('/', function(req, res, next) {
   });
 });
 
+// Add new Categories
+router.get('/add/', function(req, res, next) {
+  res.render('add_category');
+});
+
+// Add new Category POST request
+router.post('/add/', function(req, res, next) {
+  const category = new Category({ name: req.body.name, description: req.body.description });
+
+  category.save(function(err) {
+    if (err) {
+      throw err;
+    }
+    console.log('New Category' + category);
+    res.redirect('/categories');
+  });
+});
+
 router.get('/:categoryId', function(req, res, next) {
   Product.find({ category: req.params.categoryId })
     .populate('category')

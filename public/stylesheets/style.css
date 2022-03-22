@@ -7,7 +7,8 @@ a {
   color: #00b7ff;
 }
 .edit-product-form,
-.add-product-form {
+.add-product-form,
+.add-category-form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

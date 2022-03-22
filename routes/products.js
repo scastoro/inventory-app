@@ -32,8 +32,8 @@ router.post('/add', function(req, res, next) {
       throw err;
     }
     console.log('New Product: ' + product);
+    res.redirect('/products');
   });
-  res.redirect('/products');
 });
 
 router.get('/:productId', function(req, res, next) {

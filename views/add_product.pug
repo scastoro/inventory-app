@@ -1,0 +1,20 @@
+extends layout 
+
+block content
+  h3 Add Product
+  form(action='/products/add/' method="post" class="add-product-form")
+    label(for="name" class="name-label") Name: 
+    input(type="text" id="name" name="name" class='name-input' required)
+    label(for="description" class="description-label") Description: 
+    textarea(class="description-input" name="description" id="description" rows=10 cols=30 required)
+    label(for="price" class="price-label") Price: 
+    input(type="number" id="price" name="price" class='price-input' required)
+    label(for="in-stock" class="in-stock-label") In Stock: 
+    input(type="number" id="in-stock" name="in-stock" class='in-stock-input' required)
+    label(for="image-url" class="image-url") Image URL: 
+    input(type="text" id="image-url" name="image" class='image-url-input' required)
+    label(for="category" class="category-input") Category:
+    select(id="category" name="category" required)
+      each category in categories
+        option(value=category._id ) #{category.name} 
+    button(type="submit") Add Product 

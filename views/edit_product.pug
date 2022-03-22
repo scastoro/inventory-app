@@ -7,10 +7,12 @@ block content
     input(type="text" id="name" name="name" value=product.name class='name-input')
     label(for="description" class="description-label") Description: 
     textarea(class="description-input" name="description" id="description" rows=10 cols=30) #{product.description}
-    label(for="price" class="price-label") price: 
+    label(for="price" class="price-label") Price: 
     input(type="number" id="price" name="price" value=product.price class='price-input')
     label(for="in-stock" class="in-stock-label") In Stock: 
     input(type="number" id="in-stock" name="in-stock" value=product.number_in_stock class='in-stock-input')
+    label(for="image-url" class="image-url") Image URL: 
+    input(type="text" id="image-url" name="image" value=product.image class='image-url-input')
     label(for="category" class="category-input")
     select(id="category" name="category")
       each category in categories

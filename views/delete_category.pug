@@ -1,0 +1,16 @@
+extends layout 
+
+block content
+  h3 Delete a Category
+  p Note: You cannot delete a category that has products assigned to it
+  p Please remove all products from a category before deleting it
+  form(action="/categories/delete" method="post")
+    each category in checkedCategories
+      if(category.isUsed)
+        label(for=category.name) #{category.name}
+        input(type="checkbox" id=category.name disabled)
+      else
+        label(for=category.name) #{category.name}
+        input(type="checkbox" id=category.name value=category._id name=category.name)
+    button(type="submit") Delete Category
+          

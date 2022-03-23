@@ -1,5 +1,6 @@
 const Category = require('../models/category');
 const Product = require('../models/product');
+const { body, validationResult } = require('express-validator');
 
 exports.categories_list = function(req, res, next) {
   Category.find({}, function(err, categories) {
@@ -12,17 +13,35 @@ exports.categories_add_get = function(req, res, next) {
   res.render('add_category');
 };
 
-exports.categories_add_post = function(req, res, next) {
-  const category = new Category({ name: req.body.name, description: req.body.description });
-
-  category.save(function(err) {
-    if (err) {
-      throw err;
+exports.categories_add_post = [
+  body('name', 'Name is required')
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+  body('description', 'Category description is required')
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+  function(req, res, next) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render('add_categories', {
+        name: req.body.name,
+        description: req.body.description,
+        errors: errors.array(),
+      });
     }
-    console.log('New Category' + category);
-    res.redirect('/categories');
-  });
-};
+    const category = new Category({ name: req.body.name, description: req.body.description });
+
+    category.save(function(err) {
+      if (err) {
+        throw err;
+      }
+      console.log('New Category' + category);
+      res.redirect('/categories');
+    });
+  },
+];
 
 exports.categories_render_products = function(req, res, next) {
   Product.find({ category: req.params.categoryId })

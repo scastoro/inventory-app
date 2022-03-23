@@ -45,6 +45,15 @@ router.get('/:productId', function(req, res, next) {
     });
 });
 
+// Delete product
+router.post('/delete/:productId', async function(req, res, next) {
+  Product.deleteOne({ _id: req.params.productId }, function(err, response) {
+    if (err) throw err;
+    console.log(response);
+    res.redirect('/products');
+  });
+});
+
 // Populate edit products page with info from database
 router.get('/edit/:productId', async function(req, res, next) {
   const product = await Product.findById(req.params.productId).populate('category');

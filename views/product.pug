@@ -1,6 +1,12 @@
 extends layout 
 
 block content
+  section(class="delete-container")
+    section(class="delete-modal")
+      p Are you sure you want to delete this product?
+      section(class="buttons")
+        button(class="yes-btn") Yes
+        button(class="no-btn") No
   h3 #{product.name}
   ul  
     li #{product.description}
@@ -11,3 +17,5 @@ block content
       img(src=product.image style='width: 50%')
     button 
         a(href="/products/edit/" + product._id) Edit Product
+    button(class="delete-btn") Delete Product
+  script(src="../javascripts/delete_product.js") 

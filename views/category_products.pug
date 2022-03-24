@@ -2,15 +2,14 @@ extends layout
 
 block content
   if (products.length > 0)
-    h2 #{products[0].category[0].name}s
-    each product in products
-      h3 #{product.name}
-        ul  
-        li #{product.description}
-        li #{product.price}
-        li #{product.number_in_stock}
-        li #{product.category[0].name}
-        li 
-          img(src=product.image style='width: 50%')
+    section(class="container my-3")
+      h2 #{products[0].category[0].name}s
+    section(class="container product-container")
+      each product in products
+        div(class="card all-products" ) 
+          img(src=product.image class="card-img-top")
+          div(class="card-body")
+            h5(class="card-title") #{product.name}
+            a(href=product.url class="btn btn-primary p-1") View Product   
   else      
     h3 No products for this category

@@ -1,12 +1,13 @@
 extends layout 
 block content
 
-  h1 All Product Categories
-  button 
-    a(href='/categories/add/') Add Category
-  button 
-    a(href='/categories/delete/') Delete Category
-  ul 
-    each category in categories 
-      li
-        a(href=category.url) #{category.name}
+  section(class="container")
+    h1(class="mt-2") Product Categories
+    button(class="btn btn-primary") 
+      a(href='/categories/add/') Add Category
+    button(class="btn btn-danger p-0") 
+      a(href='/categories/delete/') Delete Category
+    ul 
+      each category in categories 
+        li
+          a(href=category.url class="cat-link") #{category.name}

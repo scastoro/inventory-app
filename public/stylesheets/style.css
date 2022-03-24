@@ -2,13 +2,25 @@ body {
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
+/* Utility Classes */
 a {
-  color: #fff;
+  display: inline-block;
+  color: inherit;
   text-decoration: none;
+  padding: 5px;
 }
 a:hover {
   color: #fff;
 }
+.btn {
+  padding: 0;
+}
+.btn.btn-danger {
+  padding: 5px;
+  margin-left: 10px;
+}
+
+/* Form Styling */
 .edit-product-form,
 .add-product-form,
 .add-category-form {
@@ -17,6 +29,61 @@ a:hover {
   justify-content: space-evenly;
   align-items: flex-start;
 }
+
+/* Header Styling */
+.container.header-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* All products view styling */
+.container.product-display {
+  display: flex;
+  align-items: center;
+}
+
+.card {
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.card-img-top {
+  height: 50%;
+  object-fit: contain;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* Individual Product Page Styling */
+.container.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-template-rows: 400px;
+  grid-auto-rows: 400px;
+  grid-gap: 2rem;
+  justify-items: center;
+}
+.product-image {
+  width: 250px;
+  object-fit: contain;
+}
+.product-description {
+  width: 75%;
+}
+.product-info {
+  flex: 2;
+}
+.product-image-container {
+  flex: 1;
+}
+
 .delete-container {
   top: 0;
   position: absolute;
@@ -35,36 +102,8 @@ a:hover {
 .yes-btn {
   margin-right: 30px;
 }
-
-.container.product-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  grid-template-rows: 400px;
-  grid-auto-rows: 400px;
-  grid-gap: 2rem;
-  justify-items: center;
-}
-.container.header-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-.card {
-  padding: 0.5rem;
-  width: 100%;
-}
-
-.card-img-top {
-  height: 50%;
-  object-fit: contain;
-}
-
-.product-image {
-  width: 250px;
-  object-fit: contain;
-}
-.product-description {
-  width: 50%;
+/* Product Category Styling */
+.cat-link:hover {
+  color: inherit;
+  opacity: 0.75;
 }

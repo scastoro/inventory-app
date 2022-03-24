@@ -5,8 +5,8 @@ block content
     section(class="delete-modal")
       p Are you sure you want to delete this product?
       section(class="buttons")
-        button(class="yes-btn") Yes
-        button(class="no-btn") No
+        button(class="yes-btn btn btn-primary p-1") Yes
+        button(class="no-btn btn btn-danger") No
   section(class="container product-display mt-4")
     section(class="product-info")
       h3(class="w-75") #{product.name}
@@ -17,7 +17,7 @@ block content
         <strong> Price: </strong>  $#{product.price}
       p <strong>Amount in stock:</strong> #{product.number_in_stock}
       p <strong>Category:</strong> #{product.category[0].name}
-      button(class="btn btn-primary mx-1") 
+      button(class="btn btn-primary ml-1") 
           a(href="/products/edit/" + product._id) Edit Product
       button(class="delete-btn btn btn-danger") Delete Product
     section(class="product-image-container ")

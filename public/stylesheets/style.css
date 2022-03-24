@@ -12,6 +12,9 @@ a {
 a:hover {
   color: #fff;
 }
+a.nav-link:hover {
+  opacity: 0.75;
+}
 .btn {
   padding: 0;
 }
@@ -28,6 +31,11 @@ a:hover {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
+}
+.edit-product-form input,
+.add-product-form input,
+.add-category-form input {
+  width: 250px;
 }
 
 /* Header Styling */

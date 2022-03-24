@@ -1,10 +1,23 @@
 extends layout
-
 block content
-  h2 Add Category
-  form(action="/categories/add" method="post" class="add-category-form") 
-    label(for="name" class="name-label") Name:
-    input(type="text" id="name" name="name" class="name-input" required)
-    label(for="description" class="description-label") Description:
-    textarea(name="description", cols="30", rows="10" id="description" class="description-input" required) 
-    button(type="submit") Add Category
+
+  if (name && description && errors)
+    section(class="container mt-3")
+      h2 Add Category
+      form(action="/categories/add" method="post" class="add-category-form") 
+        label(for="name" class="name-label") Name:
+        input(type="text" id="name" name="name" class="name-input" required value=name)
+        label(for="description" class="description-label") Description:
+        textarea(name="description", cols="30", rows="10" id="description" class="description-input" required value=description) 
+      ul
+        each error in errors
+          li= error
+  else
+    section(class="container mt-3")
+      h2 Add Category
+      form(action="/categories/add" method="post" class="add-category-form") 
+        label(for="name" class="name-label") Name:
+        input(type="text" id="name" name="name" class="name-input" required)
+        label(for="description" class="description-label") Description:
+        textarea(name="description", cols="30", rows="10" id="description" class="description-input" required) 
+        button(type="submit") Add Category

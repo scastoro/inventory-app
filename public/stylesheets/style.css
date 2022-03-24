@@ -1,10 +1,13 @@
 body {
-  padding: 50px;
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00b7ff;
+  color: #fff;
+  text-decoration: none;
+}
+a:hover {
+  color: #fff;
 }
 .edit-product-form,
 .add-product-form,
@@ -31,4 +34,37 @@ a {
 }
 .yes-btn {
   margin-right: 30px;
+}
+
+.container.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-template-rows: 400px;
+  grid-auto-rows: 400px;
+  grid-gap: 2rem;
+  justify-items: center;
+}
+.container.header-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.card-img-top {
+  height: 50%;
+  object-fit: contain;
+}
+
+.product-image {
+  width: 250px;
+  object-fit: contain;
+}
+.product-description {
+  width: 50%;
 }

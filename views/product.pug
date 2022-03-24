@@ -7,15 +7,15 @@ block content
       section(class="buttons")
         button(class="yes-btn") Yes
         button(class="no-btn") No
-  h3 #{product.name}
-  ul  
-    li #{product.description}
-    li #{product.price}
-    li #{product.number_in_stock}
-    li #{product.category[0].name}
-    li 
-      img(src=product.image style='width: 50%')
-    button 
+  section(class="container")
+    h3 #{product.name}
+    p(class="product-description") #{product.description}
+    p Price: #{product.price}
+    p Amount in stock: #{product.number_in_stock}
+    p Category: #{product.category[0].name}
+    p 
+      img(src=product.image class="product-image")
+    button(class="btn btn-primary") 
         a(href="/products/edit/" + product._id) Edit Product
-    button(class="delete-btn") Delete Product
+    button(class="delete-btn btn btn-danger") Delete Product
   script(src="../javascripts/delete_product.js") 
